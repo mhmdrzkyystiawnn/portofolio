@@ -1,0 +1,234 @@
+/* ============================================================
+   HERO SECTION — hero.css
+   Import di globals.css: @import './hero.css';
+   atau paste langsung di bawah globals.css
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   Layout utama
+   ------------------------------------------------------------ */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--color-ink-900);
+  background-image: none; /* override ruled lines dari body */
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 4rem;
+  padding-top: 8rem;
+  padding-bottom: 6rem;
+  min-height: 100dvh;
+}
+
+@media (max-width: 768px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+
+/* ------------------------------------------------------------
+   Texture — margin line & ruled lines
+   ------------------------------------------------------------ */
+.hero__margin-line {
+  position: absolute;
+  left: 2.5rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(139, 26, 26, 0.15);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero__ruled {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent calc(var(--line-height-ruled) - 1px),
+    rgba(201, 169, 110, 0.03) calc(var(--line-height-ruled) - 1px),
+    rgba(201, 169, 110, 0.03) var(--line-height-ruled)
+  );
+}
+
+
+/* ------------------------------------------------------------
+   Label & garis dekoratif
+   ------------------------------------------------------------ */
+.hero__label {
+  margin-bottom: 1.25rem;
+}
+
+.hero__line-short {
+  width: 3rem;
+  height: 1px;
+  background: var(--color-gold-400);
+  margin-bottom: 1.5rem;
+}
+
+
+/* ------------------------------------------------------------
+   Nama — display serif
+   ------------------------------------------------------------ */
+.hero__name {
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Nama italic (em) — emas lebih cerah */
+.hero__name em {
+  display: block;
+}
+
+
+/* ------------------------------------------------------------
+   Typewriter
+   ------------------------------------------------------------ */
+.hero__tagline {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.hero__typewriter {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-weight: 300;
+  color: var(--color-gold-200);
+  letter-spacing: -0.01em;
+}
+
+.hero__cursor {
+  display: inline-block;
+  color: var(--color-gold-400);
+  animation: blink-cursor 1s step-end infinite;
+  margin-left: 1px;
+  font-weight: 300;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+
+/* ------------------------------------------------------------
+   Deskripsi
+   ------------------------------------------------------------ */
+.hero__desc {
+  color: var(--color-ink-500) !important;
+  max-width: 36ch;
+  margin-bottom: 2.5rem;
+  line-height: 1.9;
+}
+
+
+/* ------------------------------------------------------------
+   CTA buttons
+   ------------------------------------------------------------ */
+.hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+
+/* ------------------------------------------------------------
+   Ink drop — dekoratif
+   ------------------------------------------------------------ */
+.hero__ink-drop {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-crimson);
+  opacity: 0.4;
+  margin-top: 2.5rem;
+}
+
+
+/* ------------------------------------------------------------
+   Foto profil — aside kanan
+   ------------------------------------------------------------ */
+.hero__photo-aside {
+  max-width: 22ch;
+  padding-left: 2rem;
+  border-left: 1px solid rgba(201, 169, 110, 0.15);
+  padding-bottom: 2rem;
+  align-self: end;
+}
+
+.hero__photo-frame {
+  position: relative;
+  width: 220px;
+  height: 280px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 169, 110, 0.25);
+  background: var(--color-paper-200, #f2ede3);
+}
+
+.hero__photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  color: var(--color-ink-500);
+}
+
+@media (max-width: 768px) {
+  .hero__photo-aside {
+    display: none; /* sembunyikan di mobile, biarkan hero bersih */
+  }
+}
+
+
+/* ------------------------------------------------------------
+   Scroll indicator
+   ------------------------------------------------------------ */
+.hero__scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.hero__scroll-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-gold-400);
+  opacity: 0.6;
+}
+
+.hero__scroll-indicator .label {
+  opacity: 0.4;
+}
