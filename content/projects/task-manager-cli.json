@@ -1,0 +1,23 @@
+{
+  "id": "33333333-3333-3333-3333-333333333333",
+  "slug": "task-manager-cli",
+  "title": "Task Manager CLI",
+  "year": "2023",
+  "type": "tool",
+  "status": "live",
+  "stack": ["Node.js", "TypeScript", "Commander.js", "Chalk"],
+  "description": "CLI task manager dengan fitur project, tag, due date, dan ekspor JSON/CSV. Dibangun untuk workflow terminal.",
+  "featured": false,
+  "image": "/images/projects/task-manager-cli.png",
+  "link": null,
+  "github": "https://github.com/user/task-manager-cli",
+  "challenge": "Membuat UX terminal yang intuitif tanpa GUI, handle input validation, dan persistent storage.",
+  "solution": "Interactive prompts dengan Inquirer, validasi schema Zod, storage JSON lokal dengan atomic writes.",
+  "highlights": [
+    "Subcommand architecture (add, list, done, delete, export)",
+    "Fuzzy search untuk filtering task",
+    "Konfigurasi via file ~/.taskrc.json",
+    "Auto-completion untuk shell (bash/zsh/fish)"
+  ],
+  "created_at": "2023-11-10T09:15:00Z"
+}

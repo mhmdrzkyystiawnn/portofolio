@@ -64,26 +64,53 @@ export default function ContactPage() {
   const [name, setName]       = useState('')
   const [email, setEmail]     = useState('')
   const [message, setMessage] = useState('')
+  const [honeypot, setHoneypot] = useState('')
   const [formState, setFormState] = useState<FormState>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!name || !email || !message) return
 
     setFormState('sending')
+    setErrorMessage('')
 
-    // Simulasi kirim — ganti dengan fetch ke API route atau Resend/EmailJS
-    await new Promise(r => setTimeout(r, 1800))
+    try {
+      const res = await fetch('/api/contact/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message, honeypot }),
+      })
 
-    // Ganti dengan logic pengiriman email yang nyata:
-    // const res = await fetch('/api/contact', {
-    //   method: 'POST',
-    //   body: JSON.stringify({ name, email, message }),
-    // })
-    // if (res.ok) setFormState('sent')
-    // else setFormState('error')
+      if (res.ok) {
+        setFormState('sent')
+        return
+      }
 
-    setFormState('sent')
+      if (res.status === 429) {
+        const retryAfter = Number(res.headers.get('Retry-After')) || 0
+        const menit = Math.ceil(retryAfter / 60)
+        setErrorMessage(
+          menit > 0
+            ? `terlalu banyak pesan. coba lagi dalam ${menit} menit.`
+            : 'terlalu banyak pesan. coba lagi nanti.',
+        )
+      } else if (res.status === 400) {
+        setErrorMessage('pesan tidak valid — periksa kembali isianmu.')
+      } else {
+        setErrorMessage('gagal mengirim. coba lagi atau hubungi lewat email langsung.')
+      }
+      setFormState('error')
+    } catch {
+      setErrorMessage('gagal mengirim. coba lagi atau hubungi lewat email langsung.')
+      setFormState('error')
+    }
+  }
+
+  const resetForm = () => {
+    setFormState('idle')
+    setName(''); setEmail(''); setMessage('')
+    setErrorMessage('')
   }
 
   return (
@@ -160,10 +187,7 @@ export default function ContactPage() {
                   <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
                     <button
                       className="btn btn-ghost"
-                      onClick={() => {
-                        setFormState('idle')
-                        setName(''); setEmail(''); setMessage('')
-                      }}
+                      onClick={() => resetForm()}
                     >
                       kirim pesan lain
                     </button>
@@ -172,6 +196,20 @@ export default function ContactPage() {
                 </motion.div>
               ) : (
                 <form className="contact-form" onSubmit={handleSubmit} noValidate>
+                  {/* Honeypot — tersembunyi dari manusia, hanya bot yang mengisinya */}
+                  <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: '-9999px' }}>
+                    <label htmlFor="website">jangan isi field ini</label>
+                    <input
+                      id="website"
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={e => setHoneypot(e.target.value)}
+                    />
+                  </div>
+
                   {/* Nama */}
                   <Reveal delay={0.05}>
                     <div className="contact-form__field">
@@ -249,10 +287,10 @@ export default function ContactPage() {
                     </button>
                   </Reveal>
 
-                  {formState === 'error' && (
+                  {formState === 'error' && errorMessage && (
                     <Reveal>
-                      <p className="contact-form__error label">
-                        gagal mengirim. coba lagi atau hubungi lewat email langsung.
+                      <p className="contact-form__error label" role="alert">
+                        {errorMessage}
                       </p>
                     </Reveal>
                   )}

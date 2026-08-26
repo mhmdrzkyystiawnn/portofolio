@@ -76,9 +76,8 @@ export default function HomeAboutTeaser() {
           >
             {[
               { num: '4',      label: 'project selesai' },
-              { num: '3+',     label: 'stack yang dikuasai' },
+              { num: '5+',     label: 'stack yang dikuasai' },
               { num: '2026',   label: 'tahun aktif' },
-              { num: '∞',      label: 'kopi diminum' },
             ].map(({ num, label }) => (
               <div key={label} className="home-about__stat">
                 <span className="home-about__stat-num display-italic">{num}</span>

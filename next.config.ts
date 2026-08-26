@@ -2,9 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: [],
-    unoptimized: true,   // ← tambahkan ini
+    unoptimized: true,
   },
+  trailingSlash: true,
 };
 
 export default nextConfig;

@@ -1,0 +1,23 @@
+{
+  "id": "11111111-1111-1111-1111-111111111111",
+  "slug": "cuaca-realtime",
+  "title": "Cuaca Real-time",
+  "year": "2024",
+  "type": "web app",
+  "status": "live",
+  "stack": ["Next.js", "TypeScript", "OpenWeather API", "Tailwind CSS"],
+  "description": "Aplikasi cuaca real-time dengan geolokasi browser dan prediksi 7 hari. Mendukung PWA untuk akses offline.",
+  "featured": true,
+  "image": "/images/projects/cuaca-realtime.png",
+  "link": "https://cuaca.example.com",
+  "github": "https://github.com/user/cuaca-realtime",
+  "challenge": "Mengintegrasikan API cuaca gratis dengan rate limit ketat sambil menjaga akurasi data.",
+  "solution": "Implementasi caching di edge dengan SWR, fallback ke data lokal, dan debouncing pada request geolokasi.",
+  "highlights": [
+    "Geolokasi browser + fallback input manual kota",
+    "PWA support dengan service worker untuk offline viewing",
+    "Animasi cuaca dinamis dengan Framer Motion",
+    "Responsive design mobile-first"
+  ],
+  "created_at": "2024-01-15T10:30:00Z"
+}

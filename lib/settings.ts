@@ -1,23 +1,19 @@
-import { supabase } from './supabase'
+import fs from 'fs'
+import path from 'path'
+
+const SETTINGS_FILE = path.join(process.cwd(), 'content', 'settings.json')
 
 export type SiteSettings = {
   photo_url: string | null
   bio: string | null
 }
 
-const DEFAULTS: SiteSettings = { photo_url: null, bio: null }
-
-// Baris tunggal (id = 1) yang menyimpan konfigurasi situs: foto profil & bio singkat.
 export async function getSiteSettings(): Promise<SiteSettings> {
-  const { data, error } = await supabase
-    .from('site_settings')
-    .select('photo_url, bio')
-    .eq('id', 1)
-    .maybeSingle()
-
-  if (error || !data) return DEFAULTS
-  return {
-    photo_url: data.photo_url ?? null,
-    bio: data.bio ?? null,
+  try {
+    const content = fs.readFileSync(SETTINGS_FILE, 'utf-8')
+    return JSON.parse(content) as SiteSettings
+  } catch (err) {
+    console.error(`[settings.ts] Gagal membaca ${SETTINGS_FILE}:`, err)
+    return { photo_url: null, bio: null }
   }
 }

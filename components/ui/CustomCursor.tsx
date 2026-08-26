@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 export default function CustomCursor() {
-  const cursorRef           = useRef<HTMLDivElement>(null)
+  const cursorRef = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
   const [clicking, setClicking] = useState(false)
   const [hovering, setHovering] = useState(false)
@@ -22,7 +22,6 @@ export default function CustomCursor() {
   const trailY = useSpring(rawY, { stiffness: 60, damping: 14, mass: 0.8 })
 
   useEffect(() => {
-    // Sembunyikan di touch device
     if (window.matchMedia('(pointer: coarse)').matches) return
 
     const onMove = (e: MouseEvent) => {

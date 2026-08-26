@@ -5,8 +5,6 @@ import HeroSection from '@/components/sections/HeroSection'
 import HomeProjectsPreview from '@/components/sections/HomeProjectsPreview'
 import HomeAboutTeaser from '@/components/sections/HomeAboutTeaser'
 
-export const revalidate = 0
-
 export default async function HomePage() {
   // Data dibaca di server — tidak menyentuh browser
   const [projects, settings] = await Promise.all([

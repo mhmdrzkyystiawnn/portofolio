@@ -1,4 +1,8 @@
-import { supabase } from './supabase'
+import fs from 'fs'
+import path from 'path'
+
+const CONTENT_DIR = path.join(process.cwd(), 'content')
+const PROJECTS_DIR = path.join(CONTENT_DIR, 'projects')
 
 export type ProjectRow = {
   id: string
@@ -10,69 +14,70 @@ export type ProjectRow = {
   stack: string[]
   description: string
   featured: boolean
-  image: string | null
-  link: string | null
-  github: string | null
-  challenge: string | null
-  solution: string | null
-  highlights: string[] | null
+  image?: string | null
+  link?: string | null
+  github?: string | null
+  challenge?: string | null
+  solution?: string | null
+  highlights?: string[]
   created_at: string
 }
 
-// Alias supaya kompatibel dengan komponen lama yang mengharapkan
-// bentuk data mirip frontmatter MDX.
-export type ProjectMeta = ProjectRow
-export type ProjectFull = ProjectRow
+export type ProjectMeta = Pick<
+  ProjectRow,
+  'slug' | 'title' | 'year' | 'type' | 'status' | 'featured' | 'stack' | 'description' | 'image' | 'link' | 'github'
+>
 
-function normalize(row: Record<string, unknown>): ProjectRow {
-  return {
-    id: String(row.id),
-    slug: String(row.slug),
-    title: String(row.title ?? ''),
-    year: String(row.year ?? ''),
-    type: String(row.type ?? ''),
-    status: row.status === 'archived' ? 'archived' : 'live',
-    stack: Array.isArray(row.stack) ? row.stack.map(String) : [],
-    description: String(row.description ?? ''),
-    featured: Boolean(row.featured),
-    image: row.image ? String(row.image) : null,
-    link: row.link ? String(row.link) : null,
-    github: row.github ? String(row.github) : null,
-    challenge: row.challenge ? String(row.challenge) : null,
-    solution: row.solution ? String(row.solution) : null,
-    highlights: Array.isArray(row.highlights) ? row.highlights.map(String) : [],
-    created_at: String(row.created_at ?? ''),
+export type ProjectFull = ProjectMeta & {
+  challenge?: string | null
+  solution?: string | null
+  highlights?: string[]
+  link?: string | null
+  github?: string | null
+}
+
+function readProjectFile(filename: string): ProjectRow | null {
+  const filepath = path.join(PROJECTS_DIR, filename)
+  try {
+    const content = fs.readFileSync(filepath, 'utf-8')
+    return JSON.parse(content) as ProjectRow
+  } catch (err) {
+    console.error(`[data.ts] Gagal membaca ${filepath}:`, err)
+    return null
+  }
+}
+
+function getAllProjectFiles(): string[] {
+  try {
+    return fs.readdirSync(PROJECTS_DIR).filter(f => f.endsWith('.json'))
+  } catch (err) {
+    console.error(`[data.ts] Gagal membaca direktori ${PROJECTS_DIR}:`, err)
+    return []
   }
 }
 
 export async function getAllProjects(): Promise<ProjectRow[]> {
-  const { data, error } = await supabase
-    .from('projects')
-    .select('*')
-    .order('year', { ascending: false })
-    .order('created_at', { ascending: false })
-
-  if (error) {
-    // eslint-disable-next-line no-console
-    console.error('[getAllProjects]', error.message)
-    return []
-  }
-  return (data ?? []).map(normalize)
+  const files = getAllProjectFiles()
+  const projects = files
+    .map(readProjectFile)
+    .filter((p): p is ProjectRow => p !== null)
+    .sort((a, b) => {
+      const yearDiff = Number(b.year) - Number(a.year)
+      if (yearDiff !== 0) return yearDiff
+      return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    })
+  return projects
 }
 
-export async function getProjectBySlug(slug: string): Promise<ProjectRow | null> {
-  const { data, error } = await supabase
-    .from('projects')
-    .select('*')
-    .eq('slug', slug)
-    .maybeSingle()
-
-  if (error || !data) return null
-  return normalize(data)
+export async function getProjectBySlug(slug: string): Promise<ProjectFull | null> {
+  const projects = await getAllProjects()
+  const project = projects.find(p => p.slug === slug)
+  return project ?? null
 }
 
-export async function getAllProjectSlugs(): Promise<string[]> {
-  const { data, error } = await supabase.from('projects').select('slug')
-  if (error) return []
-  return (data ?? []).map(d => String(d.slug))
+export async function getProjectMetaBySlug(slug: string): Promise<ProjectMeta | null> {
+  const project = await getProjectBySlug(slug)
+  if (!project) return null
+  const { challenge, solution, highlights, ...meta } = project
+  return meta
 }

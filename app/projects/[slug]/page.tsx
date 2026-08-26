@@ -1,8 +1,11 @@
-import { getProjectBySlug } from '@/lib/data'
+import { getProjectBySlug, getAllProjects } from '@/lib/data'
 import ProjectDetailClient from './ProjectDetailClient'
 import { notFound } from 'next/navigation'
 
-export const revalidate = 0
+export async function generateStaticParams() {
+  const projects = await getAllProjects()
+  return projects.map(p => ({ slug: p.slug }))
+}
 
 export async function generateMetadata({
   params,
