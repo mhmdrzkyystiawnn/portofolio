@@ -1,0 +1,24 @@
+{
+  "id": "0de57c56-63e7-45a4-8fd9-e419bcebbc99",
+  "slug": "dayflow",
+  "title": "DayFlow",
+  "year": "2026",
+  "type": "web app",
+  "status": "live",
+  "stack": ["Next.js 14", "TypeScript", "Tailwind CSS", "Supabase", "React Hook Form", "Zod", "OpenWeatherMap API"],
+  "description": "Personal dashboard untuk catatan harian bergaya editorial: kalender interaktif, cuaca hari ini, quote harian, to-do list, mood tracker, dan catatan per tanggal dengan upload gambar — dibangun di atas Next.js App Router dengan Supabase sebagai backend.",
+  "featured": false,
+  "image": "/images/daily.png",
+  "link": null,
+  "github": null,
+  "challenge": "Menyatukan widget-widget yang sifatnya berbeda (data real-time cuaca dari API eksternal, catatan panjang per tanggal, state kalender, dan file upload) ke dalam satu dashboard yang konsisten, tanpa membuat client penuh sesak logika dan rahasia API.",
+  "solution": "Supabase dipakai sebagai backend terpadu: auth email/password plus Google OAuth lewat @supabase/ssr agar session bekerja mulus di App Router, database untuk catatan dan aktivitas harian, Storage untuk lampiran gambar. Cuaca diambil lewat route handler server-side sehingga pemanggilan OpenWeatherMap tidak dilakukan langsung dari browser, form divalidasi Zod + React Hook Form, dan tema light/dark dikonsistenkan lewat next-themes.",
+  "highlights": [
+    "Dashboard all-in-one: kalender interaktif, cuaca, quote harian, to-do list, mood tracker, dan catatan per tanggal",
+    "Auth ganda Supabase — email/password dan Google OAuth dengan session SSR-safe di App Router",
+    "Catatan harian rich text dengan upload gambar via Supabase Storage",
+    "Cuaca OpenWeatherMap diambil melalui route handler server-side, bukan langsung dari klien",
+    "Light/dark mode dengan palet warna custom via next-themes"
+  ],
+  "created_at": "2026-05-09T00:00:00Z"
+}

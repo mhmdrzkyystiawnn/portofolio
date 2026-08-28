@@ -35,8 +35,8 @@ export default function HomeProjectsPreview({ projects }: { projects: ProjectMet
           <Reveal>
             <p className="label home-section__num">02</p>
             <h2 className="display home-section__title">
-              project &<br />
-              <em className="display-italic">karya.</em>
+              project<br />
+              <em className="display-italic">pilihan.</em>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>

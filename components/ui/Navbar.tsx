@@ -149,7 +149,7 @@ export default function Navbar() {
             pointerEvents: scrolled ? 'none' : 'auto',
           }}
         >
-          hire me
+          kontak saya
           <span className="navbar__cta-dot" aria-hidden="true" />
         </motion.a>
 

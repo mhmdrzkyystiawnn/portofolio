@@ -19,7 +19,8 @@
 
 ## Phase 3 — Verifikasi & dokumentasi
 - [x] 6. E2E lokal: email nyata masuk (x3) + limit 429 terpicu (`Retry-After` ada)
-- [ ] 7. Deploy Vercel + env vars (RESEND/CONTACT/UPSTASH) + domain subdomain
+- [x] 7. Deploy Vercel + env vars + domain subdomain — terverifikasi via
+      tes browser produksi (form kirim sukses, kartu sukses muncul)
 
 ## Keputusan (final)
 - [x] Hapus `output: 'export'` — disetujui

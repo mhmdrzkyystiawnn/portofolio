@@ -62,7 +62,7 @@ function FeaturedCard({ project, index }: { project: ProjectMeta; index: number 
                 rel="noopener noreferrer"
                 className="btn btn-ghost"
               >
-                buka site →
+                kunjungi situs →
               </a>
             )}
           </div>
@@ -170,7 +170,7 @@ export default function ProjectsListClient({ projects }: { projects: ProjectMeta
       <section className="projects-page__hero">
         <div className="container">
           <motion.p className="label" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.2 }}>
-            project — hal-hal yang pernah kubangun
+            project — hasil belajar dan eksperimen
           </motion.p>
           <motion.div
             className="projects-page__hero-line"
@@ -180,10 +180,10 @@ export default function ProjectsListClient({ projects }: { projects: ProjectMeta
           />
           <div className="projects-page__hero-row">
             <motion.h1 className="display" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] as const }}>
-              karya &<br /><em className="display-italic">eksperimen.</em>
+              project &amp;<br /><em className="display-italic">eksperimen.</em>
             </motion.h1>
             <motion.p className="projects-page__hero-sub" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.7 }}>
-              {projects.length} project — dari yang serius<br />sampai yang hanya iseng jam 3 pagi.
+              {projects.length} project — website, REST API,<br />dan tooling untuk belajar serta menyelesaikan masalah nyata.
             </motion.p>
           </div>
         </div>

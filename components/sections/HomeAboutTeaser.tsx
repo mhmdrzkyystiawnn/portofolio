@@ -41,8 +41,8 @@ export default function HomeAboutTeaser() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
             >
-              developer yang<br />
-              <em className="display-italic">detail & rapi.</em>
+              belajar lewat<br />
+              <em className="display-italic">membangun.</em>
             </motion.h2>
 
             <motion.p
@@ -62,8 +62,8 @@ export default function HomeAboutTeaser() {
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.7, delay: 0.6 }}
             >
-              <Link href="/about" className="btn">baca pengalamanku</Link>
-              <Link href="/contact" className="btn btn-ghost">hubungi aku →</Link>
+              <Link href="/about" className="btn">tentang saya</Link>
+              <Link href="/contact" className="btn btn-ghost">hubungi saya →</Link>
             </motion.div>
           </div>
 
@@ -75,9 +75,9 @@ export default function HomeAboutTeaser() {
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
           >
             {[
-              { num: '4',      label: 'project selesai' },
-              { num: '5+',     label: 'stack yang dikuasai' },
-              { num: '2026',   label: 'tahun aktif' },
+              { num: '5',      label: 'project dibangun' },
+              { num: '3',      label: 'bahasa utama: TS, JS, Python' },
+              { num: '2026',   label: 'sedang menjalani PKL' },
             ].map(({ num, label }) => (
               <div key={label} className="home-about__stat">
                 <span className="home-about__stat-num display-italic">{num}</span>

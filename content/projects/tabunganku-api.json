@@ -1,0 +1,24 @@
+{
+  "id": "a71e4c0f-c1b9-479b-9142-055d91f460ab",
+  "slug": "tabunganku-api",
+  "title": "Tabunganku API",
+  "year": "2026",
+  "type": "REST API",
+  "status": "live",
+  "stack": ["Node.js", "Express.js 5", "Supabase", "PostgreSQL", "Zod", "Swagger", "Vercel"],
+  "description": "REST API backend untuk aplikasi manajemen tabungan dengan dua mode: tabungan pribadi dan tabungan bersama berbasis grup (kode undangan unik, pelacakan kontribusi per anggota). Dideploy sebagai serverless di Vercel dengan dokumentasi Swagger interaktif.",
+  "featured": false,
+  "image": "/images/tabungaku.png",
+  "link": "https://tabungan-iki-ina.vercel.app/api-docs",
+  "github": "https://github.com/Yinaa0200/Tabunganku",
+  "challenge": "Domain tabungan bersama membawa kompleksitas nyata: izin akses per anggota, konsistensi saldo grup saat banyak kontribusi masuk, dan keharusan menjaga format respons serta penanganan error tetap seragam di seluruh endpoint — ditambah kebutuhan melindungi API publik dari penyalahgunaan.",
+  "solution": "Arsitektur berlapis controller → service → middleware: autentikasi diverifikasi lewat middleware requireAuth (Bearer token Supabase Auth), input divalidasi Zod v4 di boundary sebelum menyentuh business logic, error ditangani terpusat lewat kelas AppError dan global error handler dengan helper respons sukses/gagal yang seragam. Keamanan diperkuat helmet dan express-rate-limit, dokumentasi digenerate otomatis dari JSDoc ke Swagger UI.",
+  "highlights": [
+    "Dua mode tabungan dalam satu API: pribadi dan bersama (grup + kode undangan unik + kontribusi per anggota)",
+    "Pipeline request jelas: requireAuth → validate (Zod) → asyncHandler → controller → service",
+    "Penanganan error terpusat dengan kelas AppError dan format respons standar success/fail",
+    "Dokumentasi Swagger interaktif yang digenerate dari anotasi JSDoc",
+    "Deployed serverless di Vercel dengan hardening helmet + rate limiting"
+  ],
+  "created_at": "2026-06-23T00:00:00Z"
+}

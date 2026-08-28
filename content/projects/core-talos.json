@@ -1,0 +1,25 @@
+{
+  "id": "9823f348-0c7d-4f06-96c9-204e4d21bcd1",
+  "slug": "core-talos",
+  "title": "CORE Talos",
+  "year": "2026",
+  "type": "web app",
+  "status": "live",
+  "stack": ["TypeScript", "NestJS", "React", "Vite", "Ant Design", "Prisma", "PostgreSQL RLS", "Zod", "Turborepo", "Docker"],
+  "description": "Rebuild greenfield platform internal multi-tenant dari monolit PHP legacy (SMARTJMP) ke stack modern: API NestJS modular monolith, SPA React + Ant Design, dan PostgreSQL dengan Row-Level Security untuk isolasi data antar organisasi. Dikerjakan selama PKL dengan fokus pada modul Facility Management di atas primitif CORE.",
+  "featured": false,
+  "image": "/images/core-talos.png",
+  "link": null,
+  "github": null,
+  "challenge": "Monolit PHP legacy sulit dikembangkan: autentikasi md5, pola EAV, dan god-class CRUD. Rebuild harus jalan tanpa runtime coupling ke sistem produksi yang masih hidup, tanpa migrasi data di fase awal, dan tetap menjaga perilaku bisnis legacy yang sudah diverifikasi.",
+  "solution": "Rebuild bertahap dalam 7 fase (auth, RBAC, multi-org, users/team, data table, newsfeed, event) di atas skema Postgres baru. Multi-tenancy pakai Postgres RLS dengan koneksi sebagai role non-superuser; auth JWT access+refresh + bcrypt; validasi Zod dibagikan ke API dan web lewat package shared; modul Event dibangun murni di atas primitif CORE sebagai bukti platform mudah diperluas.",
+  "highlights": [
+    "Kontribusi utama saat PKL: modul Facility Management di atas primitif CORE, termasuk resolusi 27 temuan UX dalam satu batch perbaikan",
+    "Multi-tenancy via Postgres RLS — aplikasi selalu konek sebagai role non-superuser tanpa BYPASSRLS",
+    "Translasi legacy: md5 → bcrypt + JWT, EAV → kolom bertipe + JSONB, god-class CRUD → service per modul + protokol list-query",
+    "Soft-delete lifecycle ACTIVE → ARCHIVED → TRASHED, tanpa hard delete",
+    "StorageService lokal/S3 dengan private bucket + presigned URL, key-only di database",
+    "Modul pertama (Event) dibangun tanpa kode platform baru — validasi desain API primitives"
+  ],
+  "created_at": "2026-07-13T00:00:00Z"
+}

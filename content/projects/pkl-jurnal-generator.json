@@ -1,0 +1,24 @@
+{
+  "id": "081f2465-9798-4347-b6ee-ae0d7c6ef3c9",
+  "slug": "pkl-jurnal-generator",
+  "title": "PKL Jurnal Generator",
+  "year": "2026",
+  "type": "CLI tool",
+  "status": "live",
+  "stack": ["Python", "Gemini API", "Git", "python-dotenv"],
+  "description": "CLI Python yang mengubah aktivitas coding harian dari beberapa repo git menjadi draf laporan jurnal PKL lewat Gemini API — dari pengumpulan diff, filtering file sampah, sampai penulisan jurnal mingguan yang terorganisir otomatis. Dibuat untuk mengotomatisasi laporan PKL-nya sendiri.",
+  "featured": false,
+  "image": "/images/pkl-jurnal-generator.png",
+  "link": null,
+  "github": null,
+  "challenge": "Menulis jurnal harian secara manual itu repetitif dan gampang terlewat, tapi merangkum raw git diff mentah langsung ke AI juga bermasalah: diff penuh file lock dan hasil build memboros token, dan menjalankan ulang script di hari yang sama akan menghasilkan entri duplikat serta pemborosan panggilan API.",
+  "solution": "Pipeline multi-tahap: kumpulkan commit hari ini via git log, ambil selective diff hanya untuk file kode utama setelah membuang lock file dan folder build, lalu token guard memotong konteks ke batas aman sebelum dikirim ke Gemini. Deteksi perubahan tidak menebak dari waktu file (mtime), melainkan menyimpan hash isi diff antar run sehingga hanya perubahan benar-benar baru yang dilaporkan. Entri duplikat dihari sama otomatis di-skip untuk hemat API, output ditambahkan ke file jurnal per minggu yang terorganisir per bulan, dan penjadwalan bisa lewat cron/Task Scheduler atau mode built-in.",
+  "highlights": [
+    "Pipeline lengkap: git log → selective diff → filtering → token guard 12 ribu karakter → rangkuman Gemini",
+    "Deteksi perubahan berbasis hash isi diff, bukan mtime — tahan false positive dari git checkout/pull/auto-format",
+    "Idempoten: run duplikat di hari yang sama tidak memanggil API lagi, dengan opsi --force untuk regenerate",
+    "Output terstruktur otomatis: folder per bulan, file per minggu, marker HTML comment sebagai state",
+    "Penjadwalan fleksibel: cron/Windows Task Scheduler atau mode --schedule bawaan"
+  ],
+  "created_at": "2026-08-16T00:00:00Z"
+}

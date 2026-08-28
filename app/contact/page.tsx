@@ -142,8 +142,8 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
           >
-            ada yang ingin<br />
-            <em className="display-italic">kita buat bersama?</em>
+            punya ide atau<br />
+            <em className="display-italic">project untuk dibahas?</em>
           </motion.h1>
 
           <motion.p
@@ -178,11 +178,11 @@ export default function ContactPage() {
                 >
                   <div className="contact-form__success-mark" aria-hidden="true" />
                   <h2 className="display-italic contact-form__success-title">
-                    pesanmu sudah sampai.
+                    pesan terkirim.
                   </h2>
                   <p className="contact-form__success-sub">
-                    Aku akan membalas dalam 1–2 hari kerja.
-                    Sementara itu, boleh lihat-lihat project lain dulu.
+                    Terima kasih. Saya akan membalas dalam 1–2 hari kerja.
+                    Sementara menunggu, silakan lihat project lain dulu.
                   </p>
                   <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
                     <button
@@ -220,7 +220,7 @@ export default function ContactPage() {
                         id="name"
                         type="text"
                         className="contact-form__input"
-                        placeholder="siapa yang menulis?"
+                        placeholder="nama lengkap"
                         value={name}
                         onChange={e => setName(e.target.value)}
                         required
@@ -239,7 +239,7 @@ export default function ContactPage() {
                         id="email"
                         type="email"
                         className="contact-form__input"
-                        placeholder="ke mana aku membalas?"
+                        placeholder="alamat email aktif"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                         required
@@ -257,7 +257,7 @@ export default function ContactPage() {
                       <textarea
                         id="message"
                         className="contact-form__textarea"
-                        placeholder="ceritakan apa yang ada di pikiranmu..."
+                        placeholder="jelaskan kebutuhan atau idemu..."
                         value={message}
                         onChange={e => setMessage(e.target.value)}
                         required
@@ -372,8 +372,8 @@ export default function ContactPage() {
           <Reveal>
             <blockquote className="contact-closing-quote">
               <p className="display-italic">
-                &ldquo;setiap hubungan<br />
-                dimulai dari satu kata.&rdquo;
+                respons tercepat lewat email &mdash;<br />
+                biasanya dibalas dalam 1&ndash;2 hari kerja.
               </p>
             </blockquote>
           </Reveal>

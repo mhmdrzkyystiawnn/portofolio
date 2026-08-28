@@ -106,7 +106,7 @@ export default function AboutPage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            tentang — who am i
+            tentang — siapa saya
           </motion.p>
 
           <motion.div
@@ -124,7 +124,7 @@ export default function AboutPage() {
             transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
           >
             Siapa<br />
-            <em className="display-italic">Diriku ini?</em>
+            <em className="display-italic">saya ini?</em>
           </motion.h1>
 
           <motion.p
@@ -145,18 +145,20 @@ export default function AboutPage() {
 
           <Reveal delay={0.1}>
             <p className="about__body">
-              Muhamad Rizky Setiawan. Lahir dan tumbuh di Bogor. <br />
-              Web developer yang fokus membangun aplikasi web dari sisi
-              frontend sampai integrasi backend.
+              Saya Muhamad Rizky Setiawan, lahir dan tinggal di Bogor.
+              Sekarang duduk di kelas jurusan Pengembangan Perangkat Lunak
+              dan Gim, SMK Amaliah Ciawi, dengan fokus pada pengembangan
+              aplikasi web modern.
             </p>
           </Reveal>
 
           <Reveal delay={0.2}>
             <p className="about__body">
-              Tertarik pada detail kecil — struktur kode yang rapi,
-              performa yang cepat, dan antarmuka yang nyaman dipakai.
-              Senang belajar teknologi baru dan menerapkannya langsung
-              lewat project nyata.
+              Yang paling saya sukai dari pekerjaan ini adalah melihat ide
+              berubah menjadi produk yang benar-benar bisa dipakai orang.
+              Karena itu saya tertarik pada frontend, backend, database,
+              sekaligus pengalaman pengguna — ketiganya saling terhubung
+              dalam satu produk utuh.
             </p>
           </Reveal>
         </div>
@@ -171,28 +173,33 @@ export default function AboutPage() {
             {[
               {
                 year: '2024',
-                event: 'Mulai belajar HTML dari sekolah SMK AMALIAH.',
+                event: 'Mengenal HTML, CSS, dan dasar pengembangan web melalui sekolah.',
                 accent: false,
               },
               {
                 year: '2024',
-                event: 'Project pertama — website sederhana untuk project sekolah.',
+                event: 'Membangun website pertama untuk tugas dan project sekolah.',
                 accent: false,
               },
               {
                 year: '2025',
-                event: 'Mulai menekuni JavaScript dan jatuh cinta dengan Next.js.',
+                event: 'Mulai mendalami JavaScript, React, dan Next.js.',
                 accent: true,
               },
               {
-                year: '2026',
-                event: 'Mempelajari Laravel dan membangun beberapa project backend.',
+                year: '2025',
+                event: 'Mengembangkan berbagai project pribadi dan mempelajari full-stack development.',
                 accent: false,
               },
               {
-                year: 'kini',
-                event: 'Membangun portofolio ini — yang juga adalah tujuan sejak lama.',
+                year: '2026',
+                event: 'Menjalani praktik kerja lapangan (PKL) dan terlibat dalam pengembangan aplikasi web nyata.',
                 accent: true,
+              },
+              {
+                year: 'kini',
+                event: 'Terus belajar membangun produk digital yang lebih kompleks dan bermanfaat.',
+                accent: false,
               },
             ].map(({ year, event, accent }, i) => (
               <Reveal key={i} delay={0.05 * i}>
@@ -220,10 +227,16 @@ export default function AboutPage() {
                 </p>
               </Reveal>
               {[
-                { label: 'React / Next.js', level: 60 },
-                { label: 'TypeScript', level: 30 },
+                { label: 'React / Next.js', level: 90 },
+                { label: 'TypeScript', level: 80 },
                 { label: 'CSS / Tailwind / Bootstrap', level: 60 },
                 { label: 'Node.js', level: 52 },
+                { label: 'NestJS', level: 60 },
+                { label: 'Python', level: 60 },
+                { label: 'Pandas', level: 50 },
+                { label: 'NumPy', level: 50 },
+                { label: 'LLM AI Engineering', level: 20 },
+                { label: 'Flutter', level: 30 },
                 { label: 'Framer Motion', level: 48 },
                 { label: 'Laravel', level: 68 },
                 { label: 'Git & Version Control', level: 75 },
@@ -235,7 +248,7 @@ export default function AboutPage() {
             <div>
               <Reveal>
                 <p className="label" style={{ marginBottom: '1.5rem', color: 'var(--color-ink-500)' }}>
-                  — kreativitas
+                  — rekayasa &amp; desain
                 </p>
               </Reveal>
               {[
@@ -251,6 +264,30 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── CHAPTER 04 — FOKUS SAAT INI ── */}
+      <section className="about__section">
+        <div className="container-narrow">
+          <ChapterDivider num="04" title="fokus saat ini" />
+
+          <Reveal delay={0.1}>
+            <p className="about__body">
+              Saat ini saya fokus mempelajari Next.js, TypeScript, Node.js,
+              Laravel, dan teknologi full-stack lainnya — sambil aktif
+              membangun project pribadi sebagai sarana belajar paling
+              efektif bagi saya.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <p className="about__body">
+              Di luar web, saya mulai menekuni AI, Python, dan pengolahan
+              data. Prinsip yang saya pegang sederhana: teknologi baru
+              berguna kalau ia menyelesaikan masalah nyata.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ── PENUTUP ── */}
       <section className="about__closing">
         <div className="container-narrow">
@@ -258,10 +295,15 @@ export default function AboutPage() {
             <div className="about__closing-inner">
               <div className="divider-short" />
               <p className="display-italic about__closing-text">
-                Tertarik kolaborasi atau punya project yang ingin dibangun?
+                Terbuka untuk diskusi, kolaborasi,<br />
+                dan peluang project baru.
+              </p>
+              <p className="about__body" style={{ marginTop: '1.25rem' }}>
+                Kalau mau bertukar pengalaman seputar teknologi atau punya
+                ide yang ingin dibangun, silakan hubungi saya.
               </p>
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '2rem' }}>
-                <Link href="/contact" className="btn">hubungi aku</Link>
+                <Link href="/contact" className="btn">hubungi saya</Link>
                 <Link href="/projects" className="btn btn-ghost">lihat project →</Link>
               </div>
             </div>

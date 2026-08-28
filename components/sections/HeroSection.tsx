@@ -87,7 +87,7 @@ export default function HeroSection({ photoUrl }: { photoUrl?: string | null }) 
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
 
   const typewriterText = useTypewriter(
-    ['web developer.', 'frontend engineer.', 'desainer interface.', 'pembuat produk digital.'],
+    ['web developer.', 'frontend developer.', 'pelajar smk pplg.', 'pembelajar setia.'],
     75,
     2200
   )
@@ -137,7 +137,7 @@ export default function HeroSection({ photoUrl }: { photoUrl?: string | null }) 
               className="label"
               style={{ color: 'var(--color-ink-500)', marginRight: '0.5rem' }}
             >
-              aku adalah
+              saya adalah
             </span>
             <span className="hero__typewriter">
               {typewriterText}
@@ -147,14 +147,14 @@ export default function HeroSection({ photoUrl }: { photoUrl?: string | null }) 
 
           {/* Deskripsi singkat */}
           <motion.p variants={fadeUpVariants} className="hero__desc">
-            Membangun website yang cepat, rapi, dan enak dipakai &mdash;<br />
-            dari sisi tampilan sampai ke urusan backend.
+            Membangun website yang cepat, rapi, dan mudah digunakan &mdash;<br />
+            dari sisi tampilan sampai ke backend.
           </motion.p>
 
           {/* CTA */}
           <motion.div variants={fadeUpVariants} className="hero__actions">
             <Link href="/projects" className="btn">lihat project</Link>
-            <Link href="/about" className="btn btn-ghost">tentang aku →</Link>
+            <Link href="/about" className="btn btn-ghost">tentang saya →</Link>
           </motion.div>
 
           {/* Ink drop dekoratif */}

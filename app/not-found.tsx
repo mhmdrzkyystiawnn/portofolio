@@ -6,10 +6,10 @@ import Link from 'next/link'
 
 const LINES = [
   'halaman ini tidak ditemukan.',
-  'mungkin sudah dihapus.',
-  'mungkin belum pernah ada.',
-  'atau mungkin,',
-  'kamu nyasar ke tempat yang salah.',
+  'kemungkinan tautannya salah,',
+  'atau halamannya sudah dipindah.',
+  'silakan kembali ke halaman utama',
+  'atau lihat daftar project.',
 ]
 
 export default function NotFound() {
@@ -67,7 +67,7 @@ export default function NotFound() {
           {LINES.map((line, i) => (
             <motion.p
               key={i}
-              className={`not-found__line-text display-italic${i === 3 || i === 4 ? ' not-found__line-text--accent' : ''}`}
+              className={`not-found__line-text display-italic${i >= 3 ? ' not-found__line-text--accent' : ''}`}
               initial={{ opacity: 0, y: 12 }}
               animate={visibleLines > i ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}

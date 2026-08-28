@@ -69,7 +69,7 @@ export default function ProjectDetailClient({ project }: { project: ProjectFull 
             <motion.div className="project-detail__links" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.7 }}>
               {project.link && (
                 <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn">
-                  buka site →
+                  kunjungi situs →
                 </a>
               )}
               {project.github && (
@@ -177,7 +177,7 @@ export default function ProjectDetailClient({ project }: { project: ProjectFull 
           <div className="divider" />
           <div className="project-detail__footer-links">
             <Link href="/projects" className="btn btn-ghost">← semua project</Link>
-            <Link href="/contact" className="btn">kerja sama? →</Link>
+            <Link href="/contact" className="btn">hubungi saya →</Link>
           </div>
         </div>
       </footer>
