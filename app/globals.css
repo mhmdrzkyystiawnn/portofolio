@@ -89,7 +89,7 @@ body {
    ------------------------------------------------------------ */
 h1, h2, h3, .display {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--color-gold-200);
@@ -101,8 +101,7 @@ h3, .display-md { font-size: clamp(1.3rem, 3vw, 2rem); }
 
 .display-italic {
   font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 300;
+  font-weight: 700;
   color: var(--color-gold-400);
 }
 
