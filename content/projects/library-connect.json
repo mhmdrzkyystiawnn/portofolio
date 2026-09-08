@@ -1,0 +1,27 @@
+{
+  "id": "b2c3d4e5-f6a7-8901-bcde-f23456789012",
+  "slug": "library-connect",
+  "title": "Library Connect — Sistem Booking Buku Perpustakaan",
+  "year": "2026",
+  "type": "web app",
+  "status": "live",
+  "stack": ["Laravel 12", "PHP 8.2", "PostgreSQL", "Tailwind CSS v3", "Vite", "Alpine.js", "Laravel Breeze"],
+  "description": "Sistem manajemen perpustakaan sekolah dengan workflow booking: siswa booking buku secara online → admin approve/reject → stok dikurangi saat approval → siswa ambil di perpustakaan → admin tandai selesai saat dikembalikan. Dilengkapi deteksi otomatis keterlambatan dan denda Rp1.000/hari.",
+  "featured": false,
+  "image": "/images/library.png",
+  "link": null,
+  "github": null,
+  "challenge": "Proses peminjaman buku konvensional di perpustakaan sekolah masih manual — catatan di buku, risk free duplication (siswa booking buku yang sama dua kali), tidak ada tracking status real-time, dan admin harus cek fisik stok setiap kali ada peminjaman. Tidak ada visibility bagi siswa soal batas waktu pengembalian.",
+  "solution": "Platform terstruktur dengan dua alur terpisah: (1) Booking request — siswa pilih buku & durasi, admin approve/reject dengan alasan; stok baru dikurangi saat approval. (2) Peminjaman langsung tanpa booking — untuk pengambilan buku di tempat. Sistem auto-detect keterlambatan dan generate denda per hari saat siswa lewat deadline.",
+  "highlights": [
+    "Booking workflow 4-status: PENDING → APPROVED/REJECTED → COMPLETED. Siswa bisa booking ulang setelah direject.",
+    "Durasi split: siswa minta durasi (durasi_diminta), admin setujui durasi berbeda (durasi_disetujui) lewat modal approval.",
+    "Stok berkurang SAAT admin approve, bukan saat siswa booking — menghindari konflik stok kalau banyak siswa booking bersamaan.",
+    "Auto-detect keterlambatan via isTerlambat() — status berubah dari 'dipinjam' ke 'terlambat' dan denda Rp1.000/hari ter-generate otomatis.",
+    "Denda tracking per siswa dengan dashboard total denda; admin bisa tandai lunas via /admin/denda.",
+    "Quick booking dari halaman detail buku (quickBook) dan form manual (store) — dua cara siswa bisa booking.",
+    "Dashboard terpisah: siswa lihat peminjaman aktif + booking; admin lihat statistik buku, peminjaman, keterlambatan, dan denda bulan ini.",
+    "Public book catalog tanpa login untuk siapapun; search dan filter buku tetap bisa diakses tanpa auth."
+  ],
+  "created_at": "2026-03-22T04:16:00Z"
+}

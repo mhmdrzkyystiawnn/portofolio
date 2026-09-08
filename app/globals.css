@@ -5,6 +5,17 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------
+   FONTS
+   ------------------------------------------------------------ */
+@font-face {
+  font-family: 'BeautiqueDisplay';
+  src: url('/fonts/BeautiqueDisplay-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ------------------------------------------------------------
    DESIGN TOKENS
    ------------------------------------------------------------ */
 :root {
@@ -22,9 +33,9 @@
   --color-crimson:       #8B1A1A;
   --color-crimson-light: #D4736C;
 
-  --font-display: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  --font-display: 'BeautiqueDisplay', 'Georgia', serif;
   --font-mono:    var(--font-space-mono), 'Space Mono', 'Courier New', monospace;
-  --font-body:    var(--font-space-mono), 'Space Mono', monospace;
+  --font-body:    var(--font-space-mono), 'Space Mono', 'Courier New', monospace;
 
   --space-xs:  0.25rem;
   --space-sm:  0.5rem;
