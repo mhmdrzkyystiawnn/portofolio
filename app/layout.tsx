@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     description: 'Portofolio web developer — project, keahlian, dan pengalaman.',
     type: 'website',
   },
+  verification: {
+    google: 'CPSt267xFXe_kLPe-KtLpo0DI9Yj2dnaqfZDdON5jr4',
+  },
 }
 
 export default function RootLayout({
