@@ -10,7 +10,7 @@
   "featured": false,
   "image": "/images/one-spirit.png",
   "link": null,
-  "github": null,
+  "github": "https://github.com/mhmdrzkyystiawnn/BookingElf",
   "challenge": "Rental mobil elf konvensional masih bergantung pada WhatsApp untuk seluruh proses booking — tidak ada visibility armada tersedia, pelanggan harus tanya satu per satu untuk cek tanggal, dan admin sulit mengelola jadwal seluruh armada secara terpusat.",
   "solution": "Platform dengan katalog online yang menunjukkan armada tersedia per tanggal secara real-time. Booking masuk → notifikasi email ke admin → harga di-negosiasi via WhatsApp. Admin mengelola armada, supir, dan booking lewat panel terpadu. Rating & review membangun kepercayaan tanpa perlu testimonial manual.",
   "highlights": [

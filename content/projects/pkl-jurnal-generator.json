@@ -10,7 +10,7 @@
   "featured": false,
   "image": "/images/pkl-jurnal-generator.png",
   "link": null,
-  "github": null,
+  "github": "https://github.com/mhmdrzkyystiawnn/tools-ai-recap-work-summary",
   "challenge": "Menulis jurnal harian secara manual itu repetitif dan gampang terlewat, tapi merangkum raw git diff mentah langsung ke AI juga bermasalah: diff penuh file lock dan hasil build memboros token, dan menjalankan ulang script di hari yang sama akan menghasilkan entri duplikat serta pemborosan panggilan API.",
   "solution": "Pipeline multi-tahap: kumpulkan commit hari ini via git log, ambil selective diff hanya untuk file kode utama setelah membuang lock file dan folder build, lalu token guard memotong konteks ke batas aman sebelum dikirim ke Gemini. Deteksi perubahan tidak menebak dari waktu file (mtime), melainkan menyimpan hash isi diff antar run sehingga hanya perubahan benar-benar baru yang dilaporkan. Entri duplikat dihari sama otomatis di-skip untuk hemat API, output ditambahkan ke file jurnal per minggu yang terorganisir per bulan, dan penjadwalan bisa lewat cron/Task Scheduler atau mode built-in.",
   "highlights": [

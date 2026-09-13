@@ -10,7 +10,7 @@
   "featured": false,
   "image": "/images/library.png",
   "link": null,
-  "github": null,
+  "github": "https://github.com/mhmdrzkyystiawnn/library-connect",
   "challenge": "Proses peminjaman buku konvensional di perpustakaan sekolah masih manual — catatan di buku, risk free duplication (siswa booking buku yang sama dua kali), tidak ada tracking status real-time, dan admin harus cek fisik stok setiap kali ada peminjaman. Tidak ada visibility bagi siswa soal batas waktu pengembalian.",
   "solution": "Platform terstruktur dengan dua alur terpisah: (1) Booking request — siswa pilih buku & durasi, admin approve/reject dengan alasan; stok baru dikurangi saat approval. (2) Peminjaman langsung tanpa booking — untuk pengambilan buku di tempat. Sistem auto-detect keterlambatan dan generate denda per hari saat siswa lewat deadline.",
   "highlights": [

@@ -10,7 +10,7 @@
   "featured": false,
   "image": "/images/sonora.png",
   "link": null,
-  "github": null,
+  "github": "https://github.com/mhmdrzkyystiawnn/sonora",
   "challenge": "Menggabungkan dua API eksternal berkualitas data tidak konsisten: Last.fm sering melengkapi gambar atau tanggal rilisan dengan nilai placeholder, sementara iTunes punya preview audio tapi metadata terbatas. Tanpa strategi gabungan, UI mudah tampil rusak atau kosong.",
   "solution": "Lapisan integrasi per-provider dengan pola fallback dua arah (gambar Last.fm, jika kosong ambil dari iTunes; preview audio selalu dari iTunes), normalisasi data di service layer sebelum sampai ke client, kontrak request/response divalidasi Zod yang dipakai bersama oleh API dan frontend lewat package shared, serta auth Argon2 + JWT httpOnly cookie yang dilindungi express-rate-limit dan dimonitor Sentry.",
   "highlights": [
